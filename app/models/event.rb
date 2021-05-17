@@ -19,7 +19,7 @@ class Event < ApplicationRecord
   validates :price,
     presence: {message: "Prix obligatoire"},
     numericality: {only_integer: true, greater_than: 0, less_than: 1000, message: "Le prix doit être compris entre 1 et 1 000"}
-    
+
   validates :location,
     presence: {message: "Lieu obligatoire"}
   

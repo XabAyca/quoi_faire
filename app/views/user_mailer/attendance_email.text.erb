@@ -1,7 +1,7 @@
-Salut <%= @attendance.user.first_name %> et bienvenue chez nous !
+Salut <%= @attendance.user.first_name.capitalize %> tu a rejoint l'évènement <%=@attendance.title.capitalize%> !
 ==========================================================
  
-Tu t'es inscrit sur monsite.fr en utilisant l'e-mail suivant : <%= @attendance.user.email %>.
+La date prévue est le <%=@attendance.start_date%> pour une durée du <%=@attendance.duration%> min
  
 Pour accéder à ton espace client, connecte-toi via : <%= @url %>.
  

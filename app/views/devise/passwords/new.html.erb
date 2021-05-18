@@ -2,17 +2,17 @@
   <div class="row">
     <div class="col-md-6 offset-md-3">
       <br><br><br>
-      <%= form_for resource, as: resource_name, url: password_path(resource_name), html: { class: "form-signin mt-3",method: :post } do |f| %>
-        <h1 class="h3 mb-3 font-weight-normal text-center">Instructions mot de passe oublié</h1>
-        <%= devise_error_messages! %>
+      <%= form_for resource, as: resource_name, url: password_path(resource_name), html: {method: :post, class: "form-signin mt-3"} do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Instruction mot de passe oublié</h1>
+        <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="form-group">
           <%= f.label :email, " Adresse email" %><br />
           <%= f.email_field :email, autofocus: true, autocomplete: "email"%>
         </div>
-        <br>
+
         <div class="form-group">
-          <%= f.submit "Réinitialiser", class:'btn btn-lg btn-outline-warning btn-block'%>
+          <%= f.submit "Envoyer les informations pour réinitialer le mot de passe" , class:"mt-2 btn btn-lg btn-outline-warning btn-block"%>
         </div>
       <% end %>
       <%= link_to "Retour", root_path %>

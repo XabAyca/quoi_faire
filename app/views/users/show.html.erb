@@ -1,0 +1,26 @@
+<div class='container'>
+  <div class='containerfluid mt-5'>
+    <h2>Profil utilisateur</h2>
+    <hr>
+    <p>Prénom :<%=@user.first_name%></p>
+    <p>Nom :<%=@user.last_name%></p>
+    <p>Description : <%=@user.description%>
+    <p>Email : <%=@user.email%></p>
+  </div>
+  <hr>
+  <div class='containerfluid'>
+    <a class="btn btn-outline-warning" href="<%=edit_user_registration_path%>">Modifier</a>
+  </div> 
+  <hr>
+  <h2>Les évèments crées :</h2>
+  <div class="row">
+    <%@user.events.each do |event|%>
+      <div class="col-md-4 p-5">
+        <h2><%=event.title%></h2>
+        <p><%=event.description%></p>
+        <p><%=event.start_date.to_date%>
+        <p><a class="btn btn-outline-warning" href="" role="button">Détails »</a></p>
+      </div>
+    <%end%>
+  </div>  
+</div>

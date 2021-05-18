@@ -1,7 +1,7 @@
 <div class='container'>
   <div class='containerfluid mt-5'>
     <h2>Profil utilisateur</h2>
-    <hr>
+    <hr class='border border-3 border border-warning'>
     <p>Prénom :<%=@user.first_name%></p>
     <p>Nom :<%=@user.last_name%></p>
     <p>Description : <%=@user.description%>
@@ -19,7 +19,7 @@
         <h2><%=event.title%></h2>
         <p><%=event.description%></p>
         <p><%=event.start_date.to_date%>
-        <p><a class="btn btn-outline-warning" href="" role="button">Détails »</a></p>
+        <p><a class="btn btn-outline-warning" href="href=<%=event_path(event.id)%>" role="button">Détails »</a></p>
       </div>
     <%end%>
   </div>  

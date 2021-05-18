@@ -27,7 +27,12 @@
           <%= f.submit "Se connecter", class:'btn btn-lg btn-outline-warning btn-block' %>
         </div>
       <% end %>
+
+      <div>
+        <%= link_to "Mot de passe oublié", new_user_password_path, class:'btn  btn-outline-danger btn-block mt-2'  %>
+      </div>
       <%= link_to "Retour", root_path %>
+      
     </div>
   </div>
 </div>

@@ -12,9 +12,9 @@
     <%@events.each do |event|%>
       <div class="col-md-4 p-5">
         <h2><%=event.title%></h2>
-        <p><%=event.description%></p>
+        <p><%=event.description%></p> 
         <p><%=event.start_date.to_date%>
-        <p><a class="btn btn-outline-warning" href="" role="button">Détails »</a></p>
+        <p><a class="btn btn-outline-warning" href=<%=event_path(event.id)%> role="button">Détails »</a></p>
       </div>
     <%end%>
   </div>  

@@ -1,0 +1,16 @@
+<div class='container'>
+  <div class='containerfluid my-5'>
+    <h2><%=@event.title%> <span class='text-muted'>by <%=@event.admin.email%></span></h2>
+    <hr>
+    <p>Lieu : <%=@event.location%></p>
+    <p>Date de début : <%=@event.start_date%></p>
+    <p>Date de fin : <%=@event.end_date%>
+    <hr>
+    <p>Nombre de personnne(s): <%=@event.attendances.size%>
+    <p> Prix : <%=@event.price%> €
+    <hr class='border-3 border border-warning'>
+    <p>Description:</p>
+    <p class='mx-5'>>>> <%=@event.description%></p>
+  </div>
+
+</div>

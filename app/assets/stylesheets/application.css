@@ -45,3 +45,8 @@
   visibility: visible;
   transform: scaleX(1);
 }
+
+.text-muted{
+  font-size: 15px;
+  font-style:italic;
+}

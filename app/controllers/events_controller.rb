@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   before_action :authenticate_user!, except:[:index]
+  before_action :is_admin?, except:[:index,:new,:create,:show]
 
   def index
     @events = Event.all
@@ -23,9 +24,18 @@ class EventsController < ApplicationController
   end
 
   def edit 
+    @event = Event.find(params[:id])
   end
 
-  def update 
+  def update
+    @event = Event.find(params[:id])
+    if @event.update(post_params)
+      redirect_to event_path(params[:id]), notice: "L'évènement a bien été modifié !"
+    else
+      flash.now[:messages] = @event.errors.full_messages
+      render :edit
+    end
+    
   end
 
   def show
@@ -33,6 +43,22 @@ class EventsController < ApplicationController
   end
 
   def destroy
+    @event = Event.find(params[:id])
+    @event.destroy
+    redirect_to root_path, notice: "L'évènement a bien été détruit !"
+  end
+
+  private
+
+  def is_admin?
+    unless current_user.id == Event.find(params[:id]).admin.id
+      flash[:danger] = "Vous n'êtes pas le créateur de cet évènement....Si oui, prouvez le"
+      redirect_to root_path
+    end
+  end
+
+  def post_params
+    params.require(:event).permit(:title,:description,:duration,:location,:price,:start_date)
   end
 
 end

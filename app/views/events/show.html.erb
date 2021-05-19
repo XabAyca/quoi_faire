@@ -1,5 +1,5 @@
-<div class='container'>
-  <div class='containerfluid my-5'>
+<div class='containerfluid border-5 border-bottom border-warning'>
+  <div class='container my-5'>
     <h2><%=@event.title%> <span class='text-muted'>by <%=@event.admin.email%></span></h2>
     <hr>
     <p>Lieu : <%=@event.location%></p>
@@ -12,5 +12,17 @@
     <p>Description:</p>
     <p class='mx-5'>>>> <%=@event.description%></p>
   </div>
+</div>
 
+<div class='py-4'>
+  <div class='container text-center'>
+    <%if current_user.id != @event.admin.id && @event.users.exclude?(current_user.id)%>
+      <p>Pour s'inscrire à ce magnifique évènement ça se passe par là</p>
+      <br>
+      <a class="btn btn-outline-warning" href=<%=new_event_attendance_path(@event.id)%> role="button"><<<<  Goooo  >>>></a>
+      <%elsif current_user.id == @event.admin.id%>
+      <p>Pour en savoir plus sur mon évènement</p>
+      <a class="btn btn-outline-warning" href=<%=event_attendances_path(@event.id)%>>Mon espace évènement</a>
+    <%end%>
+   </div> 
 </div>

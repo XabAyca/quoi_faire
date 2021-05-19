@@ -50,3 +50,22 @@
   font-size: 15px;
   font-style:italic;
 }
+
+table {
+  margin: auto;
+
+
+  width: 50%;
+  }
+  th {
+  border: thin solid #ffc107;
+  padding: 5px;
+  background-color:rgb(255, 246, 161);
+  }
+  td {
+  font-family: sans-serif;
+  border: thin solid #6495ed;
+  width: 50%;
+  padding: 5px;
+  text-align: center;
+  }

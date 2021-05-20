@@ -12,6 +12,9 @@
     <%@events.each do |event|%>
       <div class="col-md-4 p-5">
         <h2><%=event.title%></h2>
+        <%if event.avatar.attached?%>
+          <%= image_tag event.avatar, alt: 'avatar', height:100, class:'event_image' %>
+        <%end%>  
         <p><%=event.description%></p> 
         <p><%=event.start_date.to_date%>
         <p><a class="btn btn-outline-warning" href=<%=event_path(event.id)%> role="button">Détails »</a></p>

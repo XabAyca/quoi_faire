@@ -11,11 +11,9 @@ class EventsController < ApplicationController
   end
 
   def create
-    p "$"*60
-    p params
-    @event = Event.new(title:params[:title],description:params[:description],admin_id:current_user.id,duration:params[:duration],location:params[:location],price:params[:price],start_date:params[:start_date].to_datetime)
-    p @event
-    if @event.save
+    @event = Event.new(post_params)
+    @event.admin_id = current_user.id
+    if @event.save 
       redirect_to root_path, notice: "L'évènement '#{@event.title.capitalize}' a bien été créé ! Félicitation"
     else
       flash.now[:messages] = @event.errors.full_messages
@@ -58,7 +56,7 @@ class EventsController < ApplicationController
   end
 
   def post_params
-    params.require(:event).permit(:title,:description,:duration,:location,:price,:start_date)
+    params.require(:event).permit(:title,:description,:duration,:location,:price,:start_date,:avatar)
   end
 
 end

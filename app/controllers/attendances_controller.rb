@@ -28,7 +28,7 @@ class AttendancesController < ApplicationController
       })
     rescue Stripe::CardError => e
       flash[:error] = e.message
-      redirect_to new_event_attendance(@event.id)
+      redirect_to event_path(@event.id)
     end
     Attendance.create(stripe_customer:params[:stripeToken],user_id:@user.id,event_id:@event.id)
   end

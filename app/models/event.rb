@@ -1,4 +1,9 @@
 class Event < ApplicationRecord
+  has_many :attendances, dependent: :destroy
+  has_many :users, through: :attendances
+  belongs_to :admin, class_name: 'User'
+  has_one_attached :avatar
+
   validates :start_date,
     presence: {message: 'Date de départ obligatoire'}
     validate :start_date_is_past
@@ -22,10 +27,9 @@ class Event < ApplicationRecord
 
   validates :location,
     presence: {message: "Lieu obligatoire"}
+
+  validate :image_attached?
   
-  has_many :attendances, dependent: :destroy
-  has_many :users, through: :attendances
-  belongs_to :admin, class_name: 'User'
 
   def start_date_is_past
     if start_date.past?
@@ -41,6 +45,12 @@ class Event < ApplicationRecord
 
   def end_date 
     @end_date = start_date + duration*60
+  end
+
+  def image_attached?
+    if avatar.attached? == false
+      errors.add(:avatar, "L'image est obligatoire")
+    end
   end
 
 end

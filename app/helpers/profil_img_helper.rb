@@ -1,0 +1,2 @@
+module ProfilImgHelper
+end

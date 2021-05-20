@@ -1,9 +1,15 @@
 <div class='container'>
   <div class='containerfluid mt-5'>
+    <%if @user.profil_img.attached?%>
+      <%= image_tag @user.profil_img, alt: 'profil_img', height:150, class:'event_image float-end mt-5' %>
+    <%else%>
+      <%= image_tag 'incognito.jpeg' ,alt:'incognito', height:150, class:'event_image float-end mt-5'%>
+    <%end%>  
     <h2>Profil utilisateur</h2>
-    <hr class='border border-3 border border-warning'>
+    
     <p>Prénom :<%=@user.first_name%></p>
     <p>Nom :<%=@user.last_name%></p>
+
     <p>Description : <%=@user.description%>
     <p>Email : <%=@user.email%></p>
   </div>

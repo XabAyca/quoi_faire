@@ -65,3 +65,5 @@ gem 'faker'
 gem 'dotenv-rails'
 gem 'devise'
 gem 'stripe'
+gem 'groupdate'
+gem "chartkick"

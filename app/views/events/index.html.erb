@@ -6,6 +6,26 @@
   </div>
 </div>
 
+<div class='container'>
+  <%if flash[:messages]%>
+    <div class="alert alert-danger" role="alert">
+      <%flash[:messages].each do |message|%>
+        <p><%=message%></p>
+      <%end%>
+    </div> 
+  <%end%>
+  <%if flash[:notice]%>
+    <div class="alert alert-success" role="alert">
+      <p><%=flash[:notice]%></p>
+    </div> 
+  <%end%>
+  <%if flash[:danger]%>
+    <div class="alert alert-danger" role="alert">
+      <p><%=flash[:danger]%></p>
+    </div> 
+  <%end%>
+</div>
+
 <div class="container py-3  ">
   
   <div class="row">

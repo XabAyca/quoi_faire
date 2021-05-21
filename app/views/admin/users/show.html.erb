@@ -1,0 +1,52 @@
+<div class='container'>
+  <div class='containerfluid mt-5'>
+
+    <div class='container'>
+      <%if flash[:messages]%>
+        <div class="alert alert-danger" role="alert">
+          <%flash[:messages].each do |message|%>
+            <p><%=message%></p>
+          <%end%>
+        </div> 
+      <%end%>
+      <%if flash[:notice]%>
+        <div class="alert alert-success" role="alert">
+          <p><%=flash[:notice]%></p>
+        </div> 
+      <%end%>
+      <%if flash[:danger]%>
+        <div class="alert alert-danger" role="alert">
+          <p><%=flash[:danger]%></p>
+        </div> 
+      <%end%>
+    </div>
+  
+    <%if @user.profil_img.attached?%>
+      <%= image_tag @user.profil_img, alt: 'profil_img', height:150, class:'event_image float-end mt-5' %>
+    <%else%>
+      <%= image_tag 'incognito.svg' ,alt:'incognito', height:150, class:'event_image float-end mt-5'%>
+    <%end%>  
+    <h2>Profil utilisateur</h2>
+    
+    <p>Prénom :<%=@user.first_name%></p>
+    <p>Nom :<%=@user.last_name%></p>
+
+    <p>Description : <%=@user.description%>
+    <p>Email : <%=@user.email%></p>
+  </div>
+  <hr>
+  <h2>Les évèments crées :</h2>
+  <div class="row">
+    <%@user.events.each do |event|%>
+      <div class="col-md-4 p-5">
+        <h2><%=event.title%></h2>
+        <%if event.avatar.attached?%>
+          <%= image_tag event.avatar, alt: 'avatar', height:100, class:'event_image' %>
+        <%end%>  
+        <p><%=event.description%></p>
+        <p><%=event.start_date.to_date%>
+        <p><a class="btn btn-outline-warning" href="href=<%=event_path(event.id)%>" role="button">Détails »</a></p>
+      </div>
+    <%end%>
+  </div>  
+</div>

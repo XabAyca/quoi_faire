@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'admin#index'
     resources :users
-    resources :admin
+    resources :admin, only: :index
     resources :events
     resources :attendances, only: :index
   end

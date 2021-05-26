@@ -1,0 +1,75 @@
+<div class="container mb-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <br><br><br>
+      <%=form_with model: @event, local: true ,class: "form-signin mt-3" do |f|%>
+        <h1 class="h3 mb-3 font-weight-normal text-center">Créer un évènement</h1>
+
+        <div class='container'>
+          <%if flash[:messages]%>
+            <div class="alert alert-danger" role="alert">
+              <%flash[:messages].each do |message|%>
+                <p><%=message%></p>
+              <%end%>
+            </div> 
+          <%end%>
+          <%if flash[:notice]%>
+            <div class="alert alert-success" role="alert">
+              <p><%=flash[:notice]%></p>
+            </div> 
+          <%end%>
+          <%if flash[:danger]%>
+            <div class="alert alert-danger" role="alert">
+              <p><%=flash[:danger]%></p>
+            </div> 
+          <%end%>
+        </div>
+
+        <div class='form-group'>
+          <label>Titre</label><br>
+          <%= f.text_field :title, class: 'form-control'%>
+        </div>
+
+        <div class='form-group'>
+          <label>Description</label><br>
+          <%= f.text_area :description, class:'form-control'%>
+        </div>
+
+        <div class='form-group'>
+          <label>Durée</label><br>
+          <%= f.number_field :duration, class:'form-control'%>
+        </div>
+
+        <div class='form-group'>
+          <label>Prix</label><br>
+          <%= f.number_field :price, class:'form-control'%>
+        </div>
+
+        <div class='form-group'>
+          <label>Lieu</label><br>
+          <%= f.text_field :location, class:'form-control'%>
+        </div>  
+
+        <div class='form-group'>
+          <label>Date et heure de départ</label><br>
+          <%= f.datetime_local_field :start_date, class:'form-control'%>
+        </div> 
+        <br>
+        <div class='form-group'>
+          <%= f.file_field :avatar, class:'form-control' %>
+        </div>
+
+        <br>
+
+        <div class='form-group'>
+
+          <button type=submit class='btn btn-outline-warning'>Créer l'évènement</button>
+
+        </div>
+        
+      <% end %>
+
+      <%= link_to "Retour", root_path %>
+    </div>
+  </div>
+</div>

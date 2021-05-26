@@ -1,29 +1,3 @@
-<div class='containerfluid py-5'>
-  <div class='container text-center border border-5 border-warning mt-5 p-5 rounded-pill  '>
-    <h2 class=yellow>Pour valider votre inscription</h2>
-    <br>
-    <p>A l'évènement <span class='yellow'><%=@event.title%></span><p>
-    <br>
-    <p>Veuillez finalisez le paiement de : <span class=yellow><%=@event.price%> €</span><p>
-    <br>
-
-    <%= form_tag event_attendances_path do %>
-      <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
-        <% end %>
-
-      </article>
-      <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-          data-description="Event"
-          data-amount= <%=@stripe_amount%>
-          data-currency="eur"
-          data-locale="auto">
-      </script>
-    <% end %>
-
-  </div>
+<div>
+  <%=render 'form'%>
 </div>

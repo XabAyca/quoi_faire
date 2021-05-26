@@ -1,0 +1,32 @@
+<div class='containerfluid border-5 border-bottom border-warning'>
+  <div class='container my-5'>
+
+    <h2><%=@event.title%> <span class='text-muted'>by <%=@event.admin.email%></span></h2>
+    <%if @event.avatar.attached?%>
+      <%= image_tag @event.avatar, alt: 'avatar', height:300, class:'event_image' %>
+    <%end%>  
+    <hr>
+    <p>Lieu : <%=@event.location%></p>
+    <p>Date de début : <%=@event.start_date%></p>
+    <p>Date de fin : <%=@event.end_date%>
+    <hr>
+    <p>Nombre de personnne(s): <%=@event.attendances.size%>
+    <p> Prix : <%=@event.price%> €
+    <hr class='border-3 border border-warning'>
+    <p>Description:</p>
+    <p class='mx-5'>>>> <%=@event.description%></p>
+  </div>
+</div>
+
+<div class='py-5'>
+  <div class='container text-center'>
+    <%if current_user.id != @event.admin.id && @event.users.exclude?(current_user.id)%>
+      <p>Pour s'inscrire à ce magnifique évènement ça se passe par là</p>
+      <br>
+      <a class="btn btn-outline-warning" href=<%=new_event_attendance_path(@event.id)%> role="button"><<<<  Goooo  >>>></a>
+      <%elsif current_user.id == @event.admin.id%>
+      <p>Pour en savoir plus sur mon évènement</p>
+      <a class="btn btn-outline-warning" href=<%=event_attendances_path(@event.id)%>>Mon espace évènement</a>
+    <%end%>
+   </div> 
+</div>
